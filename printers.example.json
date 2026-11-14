@@ -1,0 +1,7 @@
+{
+  "drive": "P:",
+  "printers": [
+    {"name": "REPLACE_WITH_NAME", "host": "REPLACE_WITH_LAN_IP", "api_key": "REPLACE_WITH_PASSWORD"},
+    {"name": "REPLACE_WITH_NAME2", "host": "REPLACE_WITH_LAN_IP2", "api_key": "REPLACE_WITH_PASSWORD2"}
+  ]
+}

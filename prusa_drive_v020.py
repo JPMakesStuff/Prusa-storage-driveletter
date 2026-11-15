@@ -1,7 +1,4 @@
-"""Experimental Windows WinFsp drive for five PrusaLink printers.
 
-Requires Windows + WinFsp + winfspy. v0.20: fix subprocess handles for windowed executable; no original backups.
-"""
 import argparse
 import subprocess
 import ctypes

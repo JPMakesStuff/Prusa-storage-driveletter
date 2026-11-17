@@ -4,8 +4,8 @@ Create a mapped drive to multiple Prusa printers USB storage
 
 This is an entirely local/offline (as in no cloud, no Internet) solution.
 
- - Modify the printers.example.json with the details of your printers, name this file printers.json
- - Simply put <b>printers.json</b> and <b>PrusaDrive.exe</b> in the same folder and run it, the drive letter is created automatically with sub-folders being each one of your printers
+ - Modify one of the printers.example-*.json with the details of your printer(s), name this file printers.json
+ - Simply put <b>printers.json</b> and <b>PrusaDrive.exe</b> in the same folder and run it, the drive letter is created automatically, the sub-folder(s) within match name of your printer(s) from the .json file
  - Copy files to/from the USB stick without wearing out the USB port anymore!
  - Pick Exit (Unmount Drive) from the system tray icon to close
  - Optionally put a shortcut to PrusaDrive.exe in your startup folder if you want it to run every time you login
@@ -18,7 +18,7 @@ Prerequisites:
 
 Current limitations:
 
- - Folders on the printers USB stick that have +100 files, you may need to wait awhile or it may timeout and not list the files or it may say something about not enough permissions, but that is not accurate
+ - Folders on the printers USB stick that have +100 files - you may need to wait awhile, it may timeout and not list the files, it may say something about not enough permissions but that is not accurate
  - Windows file copy percentage appears to hang on large files - this is not accurate, just wait longer for it to finish
  - Cannot create new folders or delete folders on the USB stick - do that by inserting the USB stick in your computer instead
  - Cannot overwrite or delete a file that is currently displayed on the printers LCD display - no fix for this, go back to the home screen (or stop printing that file), then it will work

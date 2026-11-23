@@ -1,5 +1,6 @@
+pyinstaller
+cffi
 winfspy>=0.8.4
 requests>=2.31
 pystray
-Pillow
-pyinstaller
+pillow

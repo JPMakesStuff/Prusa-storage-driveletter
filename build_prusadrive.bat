@@ -7,8 +7,7 @@ echo          PrusaDrive Build Utility
 echo ==============================================
 echo.
 
-REM Select the highest numeric version using the installed Python 3.11.
-REM This handles v020, v021, v100, etc., regardless of filename sorting.
+REM Select the highest numeric version using Python 3.11.
 set "LATEST="
 for /f "usebackq delims=" %%F in (`py -3.11 -c "import pathlib,re; files=[(int(m.group(1)),p.name) for p in pathlib.Path('.').iterdir() if p.is_file() if (m:=re.fullmatch(r'prusa_drive_v([0-9]+)\.py',p.name,re.I))]; print(max(files)[1] if files else '')"`) do set "LATEST=%%F"
 
@@ -22,19 +21,34 @@ echo Selected source: %LATEST%
 echo Output: %CD%\PrusaDrive.exe
 echo.
 
-REM Use Python 3.11 consistently for dependency checks and compilation.
-py -3.11 -c "import _cffi_backend, winfspy, requests, pystray, PIL, PyInstaller" 
-if errorlevel 1 (
-    echo.
-    echo ERROR: Missing Python 3.11 or required packages.
-    echo Install using:
-    echo py -3.11 -m pip install pyinstaller cffi winfspy requests pystray pillow
+if not exist "requirements.txt" (
+    echo ERROR: requirements.txt was not found in %CD%
     goto :failed
 )
 
-REM Build to a staging folder so an existing working EXE stays untouched
-REM if compilation fails or the old EXE is currently running.
-py -3.11 -m PyInstaller --noconfirm --clean --onefile --windowed --name PrusaDrive --distpath "dist" --workpath "build" --specpath "." --hidden-import=_cffi_backend --collect-all winfspy --collect-all pystray --collect-all PIL "%LATEST%"
+REM Install or verify dependencies from one maintained requirements file.
+echo Checking Python dependencies from requirements.txt...
+py -3.11 -m pip install -r "%~dp0requirements.txt"
+if errorlevel 1 (
+    echo ERROR: Dependency installation failed.
+    goto :failed
+)
+
+REM Verify required modules before building.
+py -3.11 -c "import _cffi_backend, winfspy, requests, pystray, PIL, PyInstaller"
+if errorlevel 1 (
+    echo ERROR: Python 3.11 or required packages are unavailable.
+    goto :failed
+)
+
+REM Use the icon for the EXE and bundle it for the tray icon code.
+if not exist "PrusaDrive.ico" (
+    echo ERROR: PrusaDrive.ico was not found in %CD%
+    goto :failed
+)
+
+REM Build to staging so the existing EXE remains untouched if the build fails.
+py -3.11 -m PyInstaller --noconfirm --clean --onefile --windowed --name PrusaDrive --distpath "dist" --workpath "build" --specpath "." --hidden-import=_cffi_backend --collect-all winfspy --collect-all pystray --collect-all PIL --icon "PrusaDrive.ico" --add-data "PrusaDrive.ico;." "%LATEST%"
 if errorlevel 1 (
     echo ERROR: PyInstaller build failed. Existing PrusaDrive.exe was not replaced.
     goto :failed

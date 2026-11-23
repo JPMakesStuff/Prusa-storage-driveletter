@@ -1,8 +1,8 @@
-# Prusa Storage Driveletter
+# <img src="PrusaDrive.png" width="50">  Prusa Storage Driveletter
 
 Create a mapped drive to multiple Prusa printers USB storage
 
-This is an entirely local/offline (as in no cloud, no Internet) solution.
+This is an entirely LAN solution, it works offline as in no cloud or Internet dependancy
 
  - Modify either of the printers.example-*.json with the details of your printer(s), save this as printers.json
  - Place <b>printers.json</b> and <b>PrusaDrive.exe</b> in the same folder and run it, the drive letter is created automatically, the sub-folder(s) are the name of your printer(s) from the .json file

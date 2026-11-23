@@ -4,11 +4,13 @@ Create a mapped drive to multiple Prusa printers USB storage
 
 This is an entirely local/offline (as in no cloud, no Internet) solution.
 
- - Modify one of the printers.example-*.json with the details of your printer(s), name this file printers.json
- - Simply put <b>printers.json</b> and <b>PrusaDrive.exe</b> in the same folder and run it, the drive letter is created automatically, the sub-folder(s) within match name of your printer(s) from the .json file
- - Copy files to/from the USB stick without wearing out the USB port anymore!
- - Pick Exit (Unmount Drive) from the system tray icon to close
+ - Modify either of the printers.example-*.json with the details of your printer(s), save this as printers.json
+ - Place <b>printers.json</b> and <b>PrusaDrive.exe</b> in the same folder and run it, the drive letter is created automatically, the sub-folder(s) are the name of your printer(s) from the .json file
+ - Enjoy coping files to/from the USB stick without wearing out the USB port anymore!
+ - Click on the system tray icon to open the drive letter
+ - Right-click on the system tray icon and pick Exit (Unmount Drive) to close
  - Optionally put a shortcut to PrusaDrive.exe in your startup folder if you want it to run every time you login
+ - If PrusaDrive.exe is already running, and you run it again, the drive letter opens
 
 Prerequisites to run the EXE:
 
@@ -21,13 +23,16 @@ Additional prerequisites only if you want to build the EXE yourself:
  - use py -3.11 -m pip install -r requirements.txt
  - use build_prusadrive.bat
 
-Current limitations:
+Limitations:
 
  - Folders on the printers USB stick that have +100 files - wait patiently, it may timeout and not list the files, it may say something about not enough permissions but that is not accurate
  - Windows file copy percentage/graph cannot be made more accurate - this is why the system tray icon shows an upload progress bar
- - Cannot create new folders on the USB stick - do that by inserting the USB stick in your computer instead
+ - Cannot create new folders on the USB stick - not supported, insert the USB stick in your computer instead
+ - Cannot copy files off of the USB stick, to your computer or to another printer - not supported, insert the USB stick in your computer instead
  - Cannot overwrite or delete a file that is currently displayed on the printers LCD display - the file is in use, go back to the home screen (or stop printing that file), then it will work
 
 Tested with Prusa XL firmware 6.4.1, MK4S firmware 6.5.3, COREONE firmware 6.5.3 - if API endpoints change in later versions this software will have to be updated
+
+If you really love this and it saves you time, consider buying something from me on [Printables](https://www.printables.com/@JPMakesStuff) or [Etsy](https://jpelectron.etsy.com/)
 
 [END]

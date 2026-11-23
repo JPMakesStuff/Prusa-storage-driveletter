@@ -1,4 +1,4 @@
-# <img src="PrusaDrive.png" width="50">  Prusa Storage Driveletter
+# <img src="PrusaDrive.png" width="50">  Prusa Storage Drive Letter or "PrusaDrive"
 
 Create a mapped drive to multiple Prusa printers USB storage
 

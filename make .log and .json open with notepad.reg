@@ -1,0 +1,20 @@
+Windows Registry Editor Version 5.00
+
+[HKEY_CURRENT_USER\Software\Classes\.log]
+@="Notepad.LogFile"
+
+[HKEY_CURRENT_USER\Software\Classes\Notepad.LogFile]
+@="Log File"
+
+[HKEY_CURRENT_USER\Software\Classes\Notepad.LogFile\shell\open\command]
+@="\"C:\\Windows\\System32\\notepad.exe\" \"%1\""
+
+[HKEY_CURRENT_USER\Software\Classes\.json]
+@="Notepad.JsonFile"
+
+[HKEY_CURRENT_USER\Software\Classes\Notepad.JsonFile]
+@="Json File"
+
+[HKEY_CURRENT_USER\Software\Classes\Notepad.JsonFile\shell\open\command]
+@="\"C:\\Windows\\System32\\notepad.exe\" \"%1\""
+
